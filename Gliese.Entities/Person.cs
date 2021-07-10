@@ -15,6 +15,6 @@ namespace Gliese.Entities
         [Required]
         public string LastName { get; set; }
         public User User { get; set; }
-        public ICollection<MainTransaction> PurchaseTransaction { get; set; }
+        public ICollection<MainTransaction> MainTransaction { get; set; }
     }
 }
