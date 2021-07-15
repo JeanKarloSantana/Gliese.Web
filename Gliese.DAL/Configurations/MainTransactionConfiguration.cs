@@ -20,6 +20,15 @@ namespace Gliese.DAL.Configurations
             builder.HasOne(x => x.TransactionType)
                 .WithMany(x => x.MainTransaction)
                 .HasForeignKey(x => x.IdTransactionType);
+
+            builder.HasOne(x => x.Person)
+                .WithMany(x => x.MainTransaction)
+                .HasForeignKey(x => x.IdPerson);
+
+            builder.HasOne(p => p.PurchaseTransaction)
+               .WithOne(p => p.MainTransaction)
+               .HasForeignKey<PurchaseTransaction>(p => p.Id);
+
         }
     }
 }

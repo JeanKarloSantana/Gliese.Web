@@ -26,6 +26,7 @@ namespace Gliese.DAL.SQL
             builder.ApplyConfiguration(new MainTransactionConfiguration());
             builder.ApplyConfiguration(new CountryConfiguration());
             builder.ApplyConfiguration(new TransactionTypeConfiguration());
+            builder.ApplyConfiguration(new PurchaseTransactionConfiguration());
         }
 
         public DbSet<Country> Country { get; set; }
@@ -35,5 +36,6 @@ namespace Gliese.DAL.SQL
         public DbSet<User> User { get; set; }
         public DbSet<MainTransaction> MainTransaction { get; set; }
         public DbSet<TransactionType> TransactionType { get; set; }
+        public DbSet<PurchaseTransaction> PurchaseTransaction { get; set; }
     }
 }

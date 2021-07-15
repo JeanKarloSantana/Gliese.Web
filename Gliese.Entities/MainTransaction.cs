@@ -14,5 +14,7 @@ namespace Gliese.Entities
         public DateTime Date { get; set; }
         public string Status { get; set; }
         public TransactionType TransactionType { get; set; }        
+        public Person Person { get; set; }
+        public PurchaseTransaction PurchaseTransaction { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using Gliese.DAL.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gliese.DAL.Migrations
 {
     [DbContext(typeof(GlieseDbContext))]
-    partial class GlieseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210715002854_Create_PurchaseTransaction_Table_And_FK")]
+    partial class Create_PurchaseTransaction_Table_And_FK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,6 +159,9 @@ namespace Gliese.DAL.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("ExchangeRateId")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdExchangeRate")
                         .HasColumnType("int");
 
@@ -168,7 +173,7 @@ namespace Gliese.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdExchangeRate");
+                    b.HasIndex("ExchangeRateId");
 
                     b.ToTable("PurchaseTransaction");
                 });
@@ -270,15 +275,13 @@ namespace Gliese.DAL.Migrations
 
             modelBuilder.Entity("Gliese.Entities.PurchaseTransaction", b =>
                 {
+                    b.HasOne("Gliese.Entities.ExchangeRate", "ExchangeRate")
+                        .WithMany("PurchaseCurrencyTransaction")
+                        .HasForeignKey("ExchangeRateId");
+
                     b.HasOne("Gliese.Entities.MainTransaction", "MainTransaction")
                         .WithOne("PurchaseTransaction")
                         .HasForeignKey("Gliese.Entities.PurchaseTransaction", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Gliese.Entities.ExchangeRate", "ExchangeRate")
-                        .WithMany("PurchaseTransaction")
-                        .HasForeignKey("IdExchangeRate")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -312,7 +315,7 @@ namespace Gliese.DAL.Migrations
 
             modelBuilder.Entity("Gliese.Entities.ExchangeRate", b =>
                 {
-                    b.Navigation("PurchaseTransaction");
+                    b.Navigation("PurchaseCurrencyTransaction");
                 });
 
             modelBuilder.Entity("Gliese.Entities.MainTransaction", b =>

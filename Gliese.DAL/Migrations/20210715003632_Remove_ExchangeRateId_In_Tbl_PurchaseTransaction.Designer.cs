@@ -4,14 +4,16 @@ using Gliese.DAL.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gliese.DAL.Migrations
 {
     [DbContext(typeof(GlieseDbContext))]
-    partial class GlieseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210715003632_Remove_ExchangeRateId_In_Tbl_PurchaseTransaction")]
+    partial class Remove_ExchangeRateId_In_Tbl_PurchaseTransaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,8 +170,6 @@ namespace Gliese.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdExchangeRate");
-
                     b.ToTable("PurchaseTransaction");
                 });
 
@@ -276,14 +276,6 @@ namespace Gliese.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gliese.Entities.ExchangeRate", "ExchangeRate")
-                        .WithMany("PurchaseTransaction")
-                        .HasForeignKey("IdExchangeRate")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ExchangeRate");
-
                     b.Navigation("MainTransaction");
                 });
 
@@ -308,11 +300,6 @@ namespace Gliese.DAL.Migrations
                     b.Navigation("ExchangeRatesFrom");
 
                     b.Navigation("ExchangeRatesTo");
-                });
-
-            modelBuilder.Entity("Gliese.Entities.ExchangeRate", b =>
-                {
-                    b.Navigation("PurchaseTransaction");
                 });
 
             modelBuilder.Entity("Gliese.Entities.MainTransaction", b =>
