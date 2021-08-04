@@ -1,14 +1,15 @@
-﻿
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Gliese.Entities
 {
-    public class User : IdentityUser<int>
-    { 
+    public class Role : IdentityRole<int>
+    {
         public DateTime DateCreated { get; set; }
-        public Person Person { get; set; }
         public ICollection<UserRole> UserRole { get; set; }
     }
 }

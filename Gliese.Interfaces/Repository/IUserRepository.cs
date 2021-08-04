@@ -1,5 +1,4 @@
 ﻿using Gliese.Entities;
-using Gliese.Entities.DTO;
 using Gliese.Interfaces.Generic;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Gliese.Interfaces.Repository
 {
-    public interface IPersonRepository : IBaseRepository<Person>
+    public interface IUserRepository : IBaseRepository<User>
     {
-        Person CreatePersonByRegisterDto(RegisterDTO dto);
+        //Task<User> GetUserByUsername(string username);
     }
 }

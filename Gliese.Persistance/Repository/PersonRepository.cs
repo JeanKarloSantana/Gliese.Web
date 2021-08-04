@@ -1,5 +1,6 @@
 ﻿using Gliese.DAL.SQL;
 using Gliese.Entities;
+using Gliese.Entities.DTO;
 using Gliese.Interfaces.Generic;
 using Gliese.Interfaces.Repository;
 using Gliese.Persistance.Generic;
@@ -17,6 +18,20 @@ namespace Gliese.Persistance.Repository
 
         public PersonRepository(GlieseDbContext dbContext) : base(dbContext)
         {
+
+        }
+
+        public Person CreatePersonByRegisterDto(RegisterDTO dto) 
+        {
+            var person = new Person();
+
+            person.FirstName = dto.FirstName;
+            person.LastName = dto.LastName;
+            person.DateCreated = DateTime.UtcNow;
+
+            Add(person);
+
+            return person;
         }
     }
 }

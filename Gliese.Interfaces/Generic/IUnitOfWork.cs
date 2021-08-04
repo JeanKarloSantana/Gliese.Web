@@ -15,5 +15,6 @@ namespace Gliese.Interfaces.Generic
         public ICurrencyRepository Currencies { get; set; }
         public IExchangeRateRepository ExchangeRates { get; set; }
         public IPersonRepository Person { get; set; }        
+        public IUserRepository User { get; set; }        
     }
 }

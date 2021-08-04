@@ -21,6 +21,7 @@ namespace Gliese.Persistance.Generic
             Currencies = new CurrencyRepository(_dbContext);
             ExchangeRates = new ExchangeRateRepository(_dbContext);            
             Person = new PersonRepository(_dbContext);            
+            User = new UserRepository(_dbContext);            
         }
 
         public int Complete() => _dbContext.SaveChanges();
@@ -29,6 +30,7 @@ namespace Gliese.Persistance.Generic
         public ICurrencyRepository Currencies { get; set; }
         public IExchangeRateRepository ExchangeRates { get; set; }        
         public IPersonRepository Person { get; set; }
+        public IUserRepository User { get; set; }
         
     }
 }

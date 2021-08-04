@@ -14,6 +14,7 @@ namespace Gliese.Entities
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        public DateTime DateCreated { get; set; }
         public User User { get; set; }
         public ICollection<MainTransaction> MainTransaction { get; set; }
     }

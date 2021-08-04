@@ -1,5 +1,7 @@
 ﻿using Gliese.DAL.Configurations;
 using Gliese.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace Gliese.DAL.SQL
 {
-    public class GlieseDbContext : DbContext
+    public class GlieseDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>,
+    IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public GlieseDbContext(DbContextOptions<GlieseDbContext> options) : base(options) 
         {
@@ -27,6 +30,8 @@ namespace Gliese.DAL.SQL
             builder.ApplyConfiguration(new CountryConfiguration());
             builder.ApplyConfiguration(new TransactionTypeConfiguration());
             builder.ApplyConfiguration(new PurchaseTransactionConfiguration());
+            builder.ApplyConfiguration(new RoleConfiguration());
+            builder.ApplyConfiguration(new UserRoleConfiguration());
         }
 
         public DbSet<Country> Country { get; set; }
@@ -37,5 +42,7 @@ namespace Gliese.DAL.SQL
         public DbSet<MainTransaction> MainTransaction { get; set; }
         public DbSet<TransactionType> TransactionType { get; set; }
         public DbSet<PurchaseTransaction> PurchaseTransaction { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
     }
 }
