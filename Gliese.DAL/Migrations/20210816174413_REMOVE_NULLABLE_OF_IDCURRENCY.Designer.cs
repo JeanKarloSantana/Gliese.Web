@@ -4,14 +4,16 @@ using Gliese.DAL.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gliese.DAL.Migrations
 {
     [DbContext(typeof(GlieseDbContext))]
-    partial class GlieseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210816174413_REMOVE_NULLABLE_OF_IDCURRENCY")]
+    partial class REMOVE_NULLABLE_OF_IDCURRENCY
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

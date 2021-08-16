@@ -11,12 +11,11 @@ namespace Gliese.Entities
     {
         public int Id { get; set; }
         [Required]
-        public string Code { get; set; }
-        public int IdCountry { get; set; }
+        public string Code { get; set; }        
         [Required]
         public string Name { get; set; }
         public ICollection<ExchangeRate> ExchangeRatesFrom { get; set; }
         public ICollection<ExchangeRate> ExchangeRatesTo { get; set; }
-        public Country Country { get; set; }
+        public ICollection<Country> Country { get; set; }
     }
 }

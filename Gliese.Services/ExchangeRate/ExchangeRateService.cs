@@ -1,4 +1,7 @@
 ﻿using Gliese.Domain.ApiURL;
+using Gliese.Entities.DTO;
+using Gliese.Interfaces.Domain;
+using Gliese.Interfaces.Service;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -8,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace Gliese.Services.ExchangeRate
 {
-    public class ExchangeRateService
+    public class ExchangeRateService : IExchangeRateService
     {
-        private readonly ExchangeRateURL _apiUrl;
+        public ExchangeRateDTO GetExchangeRate(string code) =>
+            code switch
+            {
 
-        public void GetEURRates()
-        {
-
-        }
+            };
+        
 
         private IRestResponse GetApiResponse(string url)
         {

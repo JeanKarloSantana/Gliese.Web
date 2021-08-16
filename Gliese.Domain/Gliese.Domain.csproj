@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gliese.Entities\Gliese.Entities.csproj" />
-    <ProjectReference Include="..\Gliese.Interfaces\Gliese.Interfaces.csproj" />
+    <ProjectReference Include="..\Gliese.Interfaces\Gliese.Interfaces.csproj" />    
   </ItemGroup>
 
 </Project>

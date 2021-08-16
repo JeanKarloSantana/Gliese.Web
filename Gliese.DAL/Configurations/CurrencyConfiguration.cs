@@ -15,11 +15,7 @@ namespace Gliese.DAL.Configurations
         {
             builder.ToTable("Currency");
 
-            builder.HasKey(x => x.Id);
-
-            builder.HasOne(x => x.Country)
-                .WithMany(x => x.Currency)
-                .HasForeignKey(x => x.IdCountry);
+            builder.HasKey(x => x.Id);            
         }
     }
 }

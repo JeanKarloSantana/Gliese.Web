@@ -4,14 +4,16 @@ using Gliese.DAL.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gliese.DAL.Migrations
 {
     [DbContext(typeof(GlieseDbContext))]
-    partial class GlieseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210816173637_ADD_ID_CURRENCY_TO_COUNTRY")]
+    partial class ADD_ID_CURRENCY_TO_COUNTRY
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +32,7 @@ namespace Gliese.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdCurrency")
+                    b.Property<int?>("IdCurrency")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -413,8 +415,7 @@ namespace Gliese.DAL.Migrations
                     b.HasOne("Gliese.Entities.Currency", "Currency")
                         .WithMany("Country")
                         .HasForeignKey("IdCurrency")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Currency");
                 });

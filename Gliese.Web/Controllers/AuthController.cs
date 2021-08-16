@@ -3,7 +3,6 @@ using Gliese.Entities;
 using Gliese.Entities.DTO;
 using Gliese.Interfaces.Domain;
 using Gliese.Interfaces.Generic;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

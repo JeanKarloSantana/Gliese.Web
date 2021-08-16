@@ -14,6 +14,7 @@ namespace Gliese.Entities
         public string ISOCode { get; set; }
         [Required]
         public string Name { get; set; }
-        public ICollection<Currency> Currency { get; set; }
+        public int IdCurrency { get; set; }
+        public Currency Currency { get; set; }
     }
 }
