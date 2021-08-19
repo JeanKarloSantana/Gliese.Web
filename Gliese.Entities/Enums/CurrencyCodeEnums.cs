@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Gliese.Entities.Enums
 {
-    class CurrencyCodeEnums
+    public enum CurrencyCodeEnums : int
     {
+        USD = 1,
+        EUR = 2,
+        BRL = 3,
+        CAD = 4,
+        MXN = 5
     }
 }

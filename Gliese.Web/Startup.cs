@@ -1,12 +1,17 @@
 using Gliese.DAL.SQL;
+using Gliese.Domain.ApiURL;
 using Gliese.Domain.Auth;
+using Gliese.Domain.ExchangeRateManager;
 using Gliese.Entities;
+using Gliese.Entities.Messages;
 using Gliese.Entities.Token;
 using Gliese.Interfaces.Domain;
 using Gliese.Interfaces.Generic;
 using Gliese.Interfaces.Service;
 using Gliese.Persistance.Generic;
 using Gliese.Services.Auth;
+using Gliese.Services.ExchangeRate;
+using Gliese.Services.JsonDeserialize;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,14 +41,14 @@ namespace Gliese.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().AddJsonOptions(options => 
+            services.AddMvc().AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.PropertyNamingPolicy = null;                
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
 
-            }).ConfigureApiBehaviorOptions(options =>
+            });/*.ConfigureApiBehaviorOptions(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
-            });
+            });*/
 
             services.AddDbContext<GlieseDbContext>(options => options
                 .UseSqlServer(("Name=GlieseDbContext")));
@@ -116,6 +121,11 @@ namespace Gliese.Web
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IAuthManager, AuthManager>();
             services.AddTransient<IJwtService, JwtService>();
+            services.AddTransient<IExchangeRateManager, ExchangeRateManager>();
+            services.AddTransient<IExchangeRateService, ExchangeRateService>();
+            services.AddTransient<IJsonDeserializeService, JsonDeserializeService>();
+            services.AddTransient<ExchangeRateURL>();
+            services.AddTransient<ErrorMessages>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

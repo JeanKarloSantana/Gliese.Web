@@ -16,6 +16,7 @@ namespace Gliese.Persistance.Repository
 
         public ExchangeRateRepository(GlieseDbContext dbContext) : base(dbContext)
         {
+            
         }
     }
 }

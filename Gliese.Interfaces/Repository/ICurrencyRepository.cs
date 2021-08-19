@@ -10,5 +10,6 @@ namespace Gliese.Interfaces.Repository
 {
     public interface ICurrencyRepository : IBaseRepository<Currency>
     {
+        Task<int> GetIdCurrencyByCode(string code);
     }
 }
