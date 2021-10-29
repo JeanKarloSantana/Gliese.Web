@@ -9,6 +9,6 @@ namespace Gliese.Entities.Messages
     public class ErrorMessages
     {
         public string UnableToRetrieveApiData { get; } = "Unable to retrieve data from the Api";
-        public string InvalidCurrencyCode { get; } = "Invalid currency code";
+        public string InvalidCurrencyCode { get; } = "The provided currency code is invalid";
     }
 }

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace Gliese.Interfaces.Repository
 {
-    public interface IExchangeRateRepository : IBaseRepository<ExchangeRate>
+    public interface IAccountRepository : IBaseRepository<Account>
     {
-        Task<List<ExchangeRate>> GetCurrencyAllExchangeRate(int id);
     }
 }

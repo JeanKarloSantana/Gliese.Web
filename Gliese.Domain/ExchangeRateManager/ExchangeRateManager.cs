@@ -16,6 +16,7 @@ using Gliese.Entities.ApiDTO;
 using Gliese.Entities.Enums;
 using Gliese.Interfaces.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Gliese.Entities;
 
 namespace Gliese.Domain.ExchangeRateManager
 {
@@ -27,7 +28,7 @@ namespace Gliese.Domain.ExchangeRateManager
         private readonly ErrorMessages _errorMessages;
         public ExchangeRateManager
         (
-            IExchangeRateService exchangeService, 
+            IExchangeRateService exchangeService,
             IJsonDeserializeService jsonDeserialize,
             IUnitOfWork unitOfWork
         )
@@ -37,24 +38,24 @@ namespace Gliese.Domain.ExchangeRateManager
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ResponseDTO<ExchangeRateDTO>> GetExchangeRateHandler(string code) 
+        public async Task<ResponseDTO<ExchangeRateDTO>> GetExchangeRateHandler(string code)
         {
-            var response = new ResponseDTO<ExchangeRateDTO>();            
+            var response = new ResponseDTO<ExchangeRateDTO>();
 
             IRestResponse rates = await _exchangeService.GetExchangeRate(code);
 
-            if (!rates.IsSuccessful) return await UnableToRetrieveApiData(response);            
+            if (!rates.IsSuccessful) return await UnableToRetrieveApiData(response);
 
-            response.Data = await _jsonDeserialize.ExchangeRateDeserialize(code, rates);           
+            response.Data = await _jsonDeserialize.ExchangeRateDeserialize(code, rates);
 
             return response;
         }
 
-        private async Task<ResponseDTO<ExchangeRateDTO>> UnableToRetrieveApiData(ResponseDTO<ExchangeRateDTO> response) 
+        private async Task<ResponseDTO<ExchangeRateDTO>> UnableToRetrieveApiData(ResponseDTO<ExchangeRateDTO> response)
         {
             response.Errors.Add(_errorMessages.UnableToRetrieveApiData);
             response.Succeeded = false;
-            response.StatusCode = 500;            
+            response.StatusCode = 500;
             return await Task.FromResult(response);
         }
 
@@ -64,7 +65,6 @@ namespace Gliese.Domain.ExchangeRateManager
             "EUR" => await Task.FromResult(new ObjectResult(response.Data.EURCurrencyRate) { StatusCode = 200 }),
             "CAD" => await Task.FromResult(new ObjectResult(response.Data.CADCurrencyRate) { StatusCode = 200 }),
             _ => throw new ArgumentException(message: _errorMessages.InvalidCurrencyCode, paramName: nameof(code)),
-        };
-                  
+        };                  
     }
 }

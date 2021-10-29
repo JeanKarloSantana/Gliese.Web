@@ -10,5 +10,6 @@ namespace Gliese.Entities
         public DateTime DateCreated { get; set; }
         public Person Person { get; set; }
         public ICollection<UserRole> UserRole { get; set; }
+        public ICollection<Account> Account { get; set; }
     }
 }

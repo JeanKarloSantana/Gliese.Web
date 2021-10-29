@@ -17,5 +17,6 @@ namespace Gliese.Entities
         public ICollection<ExchangeRate> ExchangeRatesFrom { get; set; }
         public ICollection<ExchangeRate> ExchangeRatesTo { get; set; }
         public ICollection<Country> Country { get; set; }
+        public ICollection<Account> Account { get; set; }
     }
 }

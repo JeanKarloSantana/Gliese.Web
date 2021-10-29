@@ -2,6 +2,7 @@
 using Gliese.Entities;
 using Gliese.Interfaces.Repository;
 using Gliese.Persistance.Generic;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,9 @@ namespace Gliese.Persistance.Repository
         {
             
         }
+
+        public async Task<List<ExchangeRate>> GetCurrencyAllExchangeRate(int id) => await context.ExchangeRate
+            .Where(r => r.IdFromCurrency == id)
+            .ToListAsync();        
     }
 }

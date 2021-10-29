@@ -83,17 +83,17 @@ namespace Gliese.Web.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login(LoginDTO dto)
         {
             try
             {
-                User user = await _userManager.FindByNameAsync(dto.UserName);
+                User user = await _userManager.FindByNameAsync(dto.Username);
 
                 if (user == null) return StatusCode(401, "User not found");
 
-                var result = await _signInManager.PasswordSignInAsync(dto.UserName, dto.Password, isPersistent: false, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(dto.Username, dto.Password, isPersistent: false, lockoutOnFailure: true);
 
                 if (result.Succeeded)
                 {

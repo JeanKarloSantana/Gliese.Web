@@ -28,7 +28,7 @@ namespace Gliese.Services.ExchangeRate
         }
 
         public async Task<IRestResponse> GetExchangeRate(string code) =>
-            code switch
+            code.ToUpper() switch
             {
                 "USD" => await GetApiResponse(_apiUrl.USDCurrencyRate),
                 "EUR" => await GetApiResponse(_apiUrl.EURCurrencyRate),

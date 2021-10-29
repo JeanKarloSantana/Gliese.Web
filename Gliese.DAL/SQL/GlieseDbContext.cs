@@ -32,6 +32,7 @@ namespace Gliese.DAL.SQL
             builder.ApplyConfiguration(new PurchaseTransactionConfiguration());
             builder.ApplyConfiguration(new RoleConfiguration());
             builder.ApplyConfiguration(new UserRoleConfiguration());
+            builder.ApplyConfiguration(new AccountConfiguration());
         }
 
         public DbSet<Country> Country { get; set; }
@@ -44,5 +45,6 @@ namespace Gliese.DAL.SQL
         public DbSet<PurchaseTransaction> PurchaseTransaction { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<Account> Account { get; set; }
     }
 }

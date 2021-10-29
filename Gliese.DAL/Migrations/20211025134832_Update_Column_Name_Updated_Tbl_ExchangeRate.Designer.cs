@@ -4,57 +4,22 @@ using Gliese.DAL.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gliese.DAL.Migrations
 {
     [DbContext(typeof(GlieseDbContext))]
-    partial class GlieseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211025134832_Update_Column_Name_Updated_Tbl_ExchangeRate")]
+    partial class Update_Column_Name_Updated_Tbl_ExchangeRate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Gliese.Entities.Account", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AccNumber")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("Closed")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IdAccCurrency")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdAccUser")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Opened")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdAccCurrency");
-
-                    b.HasIndex("IdAccUser");
-
-                    b.ToTable("Account");
-                });
 
             modelBuilder.Entity("Gliese.Entities.Country", b =>
                 {
@@ -445,25 +410,6 @@ namespace Gliese.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Gliese.Entities.Account", b =>
-                {
-                    b.HasOne("Gliese.Entities.Currency", "Currency")
-                        .WithMany("Account")
-                        .HasForeignKey("IdAccCurrency")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Gliese.Entities.User", "User")
-                        .WithMany("Account")
-                        .HasForeignKey("IdAccUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Currency");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Gliese.Entities.Country", b =>
                 {
                     b.HasOne("Gliese.Entities.Currency", "Currency")
@@ -600,8 +546,6 @@ namespace Gliese.DAL.Migrations
 
             modelBuilder.Entity("Gliese.Entities.Currency", b =>
                 {
-                    b.Navigation("Account");
-
                     b.Navigation("Country");
 
                     b.Navigation("ExchangeRatesFrom");
@@ -638,8 +582,6 @@ namespace Gliese.DAL.Migrations
 
             modelBuilder.Entity("Gliese.Entities.User", b =>
                 {
-                    b.Navigation("Account");
-
                     b.Navigation("UserRole");
                 });
 #pragma warning restore 612, 618

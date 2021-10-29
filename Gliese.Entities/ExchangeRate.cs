@@ -13,7 +13,7 @@ namespace Gliese.Entities
         public int IdToCurrency { get; set; }
         public decimal Buy { get; set; }
         public decimal Sell { get; set; }
-        public DateTime Update { get; set; }
+        public DateTime Updated { get; set; }
         public Currency CurrencyFrom { get; set; }
         public Currency CurrencyTo { get; set; }        
         public ICollection<PurchaseTransaction> PurchaseTransaction { get; set; }        

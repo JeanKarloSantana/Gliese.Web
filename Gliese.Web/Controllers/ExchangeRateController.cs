@@ -1,7 +1,9 @@
-﻿using Gliese.Entities.ApiDTO;
+﻿using Gliese.Entities;
+using Gliese.Entities.ApiDTO;
 using Gliese.Entities.DTO;
 using Gliese.Entities.Exceptions;
 using Gliese.Interfaces.Domain;
+using Gliese.Interfaces.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,10 +18,15 @@ namespace Gliese.Web.Controllers
     public class ExchangeRateController : ControllerBase
     {
         private readonly IExchangeRateManager _exchangeRate;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ExchangeRateController(IExchangeRateManager exchangeRate) 
+        public ExchangeRateController(
+            IExchangeRateManager exchangeRate, 
+            IUnitOfWork unitOfWork
+            ) 
         {
             _exchangeRate = exchangeRate;
+            _unitOfWork = unitOfWork;
         }
 
         [Route("Get/{code}")]
@@ -38,6 +45,20 @@ namespace Gliese.Web.Controllers
             {
                 return await ReturnThrowException(ex.GetType(), ex);             
             }                           
+        }
+
+        [Route("GetOneCurrencyAllRates/{id:int}")]
+        [HttpGet]
+        public async Task<IActionResult> GetCurrencyRate(int id)
+        {
+            try
+            {                
+                return StatusCode(200, await _unitOfWork.ExchangeRates.GetCurrencyAllExchangeRate(id));
+            }
+            catch (Exception ex)
+            {
+                return await ReturnThrowException(ex.GetType(), ex);
+            }
         }
 
         private async Task<IActionResult> ReturnThrowException(Type exType, Exception ex) =>
