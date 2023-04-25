@@ -13,9 +13,9 @@ namespace Gliese.Persistance.Repository
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public GlieseDbContext _context { get { return context; } }
+        public DeimosDbContext _context { get { return context; } }
 
-        public UserRepository(GlieseDbContext dbContext) : base(dbContext)
+        public UserRepository(DeimosDbContext dbContext) : base(dbContext)
         {
         }
 

@@ -13,9 +13,9 @@ namespace Gliese.Persistance.Repository
 {
     public class ExchangeRateRepository : BaseRepository<ExchangeRate>, IExchangeRateRepository
     {
-        public GlieseDbContext _context { get { return context; } }
+        public DeimosDbContext _context { get { return context; } }
 
-        public ExchangeRateRepository(GlieseDbContext dbContext) : base(dbContext)
+        public ExchangeRateRepository(DeimosDbContext dbContext) : base(dbContext)
         {
             
         }

@@ -12,9 +12,9 @@ namespace Gliese.Persistance.Generic
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly GlieseDbContext _dbContext;
+        private readonly DeimosDbContext _dbContext;
 
-        public UnitOfWork(GlieseDbContext dbContext)
+        public UnitOfWork(DeimosDbContext dbContext)
         {
             _dbContext = dbContext;
 

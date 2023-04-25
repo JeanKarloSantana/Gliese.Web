@@ -12,9 +12,9 @@ namespace Gliese.Persistance.Repository
 {
     public class AccountRepository : BaseRepository<Account>, IAccountRepository
     {
-        public GlieseDbContext _context { get { return context; } }
+        public DeimosDbContext _context { get { return context; } }
 
-        public AccountRepository(GlieseDbContext dbContext) : base(dbContext)
+        public AccountRepository(DeimosDbContext dbContext) : base(dbContext)
         {
         }
     }

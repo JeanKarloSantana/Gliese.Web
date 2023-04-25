@@ -12,9 +12,9 @@ namespace Gliese.Persistance.Generic
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        protected GlieseDbContext context { get; private set; }
+        protected DeimosDbContext context { get; private set; }
 
-        public BaseRepository(GlieseDbContext dbContext)
+        public BaseRepository(DeimosDbContext dbContext)
         {
             context = dbContext;
         }

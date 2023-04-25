@@ -50,8 +50,8 @@ namespace Gliese.Web
                 options.SuppressModelStateInvalidFilter = true;
             });*/
 
-            services.AddDbContext<GlieseDbContext>(options => options
-                .UseSqlServer(("Name=GlieseDbContext")));
+            services.AddDbContext<DeimosDbContext>(options => options
+                .UseSqlServer(("Name=DeimosDbContext")));
 
             // ===== Add Identity ========
             services.AddIdentity<User, Role>(options =>
@@ -62,7 +62,7 @@ namespace Gliese.Web
             })
             .AddRoles<Role>()
             .AddRoleManager<RoleManager<Role>>()
-            .AddEntityFrameworkStores<GlieseDbContext>()
+            .AddEntityFrameworkStores<DeimosDbContext>()
             .AddDefaultTokenProviders();
 
             // ===== Add Jwt Authentication ========

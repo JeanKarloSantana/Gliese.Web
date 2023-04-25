@@ -14,9 +14,9 @@ namespace Gliese.Persistance.Repository
 {
     public class CurrencyRepository : BaseRepository<Currency>, ICurrencyRepository 
     {
-        public GlieseDbContext _context { get { return context; } }
+        public DeimosDbContext _context { get { return context; } }
 
-        public CurrencyRepository(GlieseDbContext dbContext) : base(dbContext)
+        public CurrencyRepository(DeimosDbContext dbContext) : base(dbContext)
         {           
         }
 

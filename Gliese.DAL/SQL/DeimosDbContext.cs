@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace Gliese.DAL.SQL
 {
-    public class GlieseDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>,
+    public class DeimosDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>,
     IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
-        public GlieseDbContext(DbContextOptions<GlieseDbContext> options) : base(options) 
+        public DeimosDbContext(DbContextOptions<DeimosDbContext> options) : base(options)
         {
         }
 
-       /* protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
+            
             builder.ApplyConfiguration(new CurrencyConfiguration());
             builder.ApplyConfiguration(new ExchangeRateConfiguration());
             builder.ApplyConfiguration(new PersonConfiguration());
@@ -45,6 +45,6 @@ namespace Gliese.DAL.SQL
         public DbSet<PurchaseTransaction> PurchaseTransaction { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
-        public DbSet<Account> Account { get; set; }*/
+        public DbSet<Account> Account { get; set; }
     }
 }
