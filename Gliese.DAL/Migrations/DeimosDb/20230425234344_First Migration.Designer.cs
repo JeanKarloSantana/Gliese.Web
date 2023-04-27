@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gliese.DAL.Migrations.DeimosDb
 {
     [DbContext(typeof(DeimosDbContext))]
-    [Migration("20230425021336_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20230425234344_First Migration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
