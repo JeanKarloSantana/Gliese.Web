@@ -5,20 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gliese.Entities
+namespace Gliese.Entities.DTO
 {
-    public class WorkedTask
+    public class WorkedTaskDTO
     {
         public int Id { get; set; }
-        public int IdUser { get; set; }        
-        [Required] 
+        public int IdUser { get; set; }
+        
         public string StartTime { get; set; }
-        [Required]
+        
         public string EndTime { get; set; }
-        [Required] 
+        
         public string Description { get; set; }
-        [Required]
+        
         public DateTime Date { get; set; }
-        public User User { get; set; }
     }
 }

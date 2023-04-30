@@ -37,7 +37,7 @@ namespace Gliese.Web.Controllers
             {
                 ResponseDTO<ExchangeRateDTO> response = await _exchangeRate.GetExchangeRateHandler(code);
 
-                if (!response.Succeeded) return StatusCode(response.StatusCode, response.Errors);
+                if (!response.succeed) return StatusCode(response.StatusCode, response.Errors);
 
                 return await _exchangeRate.ReturnCurrencyClass(code, response);
             }
@@ -45,6 +45,21 @@ namespace Gliese.Web.Controllers
             {
                 return await ReturnThrowException(ex.GetType(), ex);             
             }                           
+        }
+
+        [Route("Get/Test")]
+        [HttpGet]
+        public string GetMsg()
+        {
+            try
+            { 
+
+                return "Test was successful";
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
         }
 
         [Route("GetOneCurrencyAllRates/{id:int}")]

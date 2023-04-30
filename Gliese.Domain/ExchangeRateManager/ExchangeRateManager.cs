@@ -54,7 +54,7 @@ namespace Gliese.Domain.ExchangeRateManager
         private async Task<ResponseDTO<ExchangeRateDTO>> UnableToRetrieveApiData(ResponseDTO<ExchangeRateDTO> response)
         {
             response.Errors.Add(_errorMessages.UnableToRetrieveApiData);
-            response.Succeeded = false;
+            response.succeed = false;
             response.StatusCode = 500;
             return await Task.FromResult(response);
         }

@@ -22,7 +22,8 @@ namespace Gliese.Persistance.Generic
             ExchangeRates = new ExchangeRateRepository(_dbContext);            
             Person = new PersonRepository(_dbContext);            
             User = new UserRepository(_dbContext);            
-            Account = new AccountRepository(_dbContext);            
+            Account = new AccountRepository(_dbContext);
+            WorkedTask = new WorkedTaskRepository(_dbContext);
         }
 
         public int Complete() => _dbContext.SaveChanges();
@@ -32,6 +33,7 @@ namespace Gliese.Persistance.Generic
         public IExchangeRateRepository ExchangeRates { get; set; }        
         public IPersonRepository Person { get; set; }
         public IUserRepository User { get; set; }
-        public IAccountRepository Account { get; set; }        
+        public IAccountRepository Account { get; set; }
+        public IWorkedTaskRepository WorkedTask { get; set; }
     }
 }

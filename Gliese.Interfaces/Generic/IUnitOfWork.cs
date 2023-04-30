@@ -17,5 +17,6 @@ namespace Gliese.Interfaces.Generic
         public IPersonRepository Person { get; set; }        
         public IUserRepository User { get; set; } 
         public IAccountRepository Account { get; set; }
+        public IWorkedTaskRepository WorkedTask { get; set; }
     }
 }

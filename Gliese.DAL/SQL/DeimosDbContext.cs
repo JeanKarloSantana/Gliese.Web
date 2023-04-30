@@ -33,6 +33,7 @@ namespace Gliese.DAL.SQL
             builder.ApplyConfiguration(new RoleConfiguration());
             builder.ApplyConfiguration(new UserRoleConfiguration());
             builder.ApplyConfiguration(new AccountConfiguration());
+            builder.ApplyConfiguration(new WorkedTaskConfiguration());
         }
 
         public DbSet<Country> Country { get; set; }
@@ -46,5 +47,6 @@ namespace Gliese.DAL.SQL
         public DbSet<Role> Role { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
         public DbSet<Account> Account { get; set; }
+        public DbSet<WorkedTask> WorkedTask { get; set; }
     }
 }

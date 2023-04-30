@@ -4,14 +4,16 @@ using Gliese.DAL.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gliese.DAL.Migrations.DeimosDb
 {
     [DbContext(typeof(DeimosDbContext))]
-    partial class DeimosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230429191222_remove workedstartDate")]
+    partial class removeworkedstartDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -359,36 +361,6 @@ namespace Gliese.DAL.Migrations.DeimosDb
                     b.ToTable("UserRole");
                 });
 
-            modelBuilder.Entity("Gliese.Entities.WorkedTask", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdUser")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EndTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StartTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id", "IdUser");
-
-                    b.HasIndex("IdUser");
-
-                    b.ToTable("WorkedTask");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -592,17 +564,6 @@ namespace Gliese.DAL.Migrations.DeimosDb
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Gliese.Entities.WorkedTask", b =>
-                {
-                    b.HasOne("Gliese.Entities.User", "User")
-                        .WithMany("WorkedTask")
-                        .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("Gliese.Entities.Role", null)
@@ -682,8 +643,6 @@ namespace Gliese.DAL.Migrations.DeimosDb
                     b.Navigation("Account");
 
                     b.Navigation("UserRole");
-
-                    b.Navigation("WorkedTask");
                 });
 #pragma warning restore 612, 618
         }

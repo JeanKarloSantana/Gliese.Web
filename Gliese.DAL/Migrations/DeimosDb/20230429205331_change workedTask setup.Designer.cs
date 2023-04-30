@@ -4,14 +4,16 @@ using Gliese.DAL.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gliese.DAL.Migrations.DeimosDb
 {
     [DbContext(typeof(DeimosDbContext))]
-    partial class DeimosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230429205331_change workedTask setup")]
+    partial class changeworkedTasksetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

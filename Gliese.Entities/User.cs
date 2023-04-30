@@ -11,5 +11,6 @@ namespace Gliese.Entities
         public Person Person { get; set; }
         public ICollection<UserRole> UserRole { get; set; }
         public ICollection<Account> Account { get; set; }
+        public ICollection<WorkedTask> WorkedTask { get; set; }
     }
 }

@@ -2,6 +2,7 @@ using Gliese.DAL.SQL;
 using Gliese.Domain.ApiURL;
 using Gliese.Domain.Auth;
 using Gliese.Domain.ExchangeRateManager;
+using Gliese.Domain.themis;
 using Gliese.Entities;
 using Gliese.Entities.Messages;
 using Gliese.Entities.Token;
@@ -124,6 +125,7 @@ namespace Gliese.Web
             services.AddTransient<IExchangeRateManager, ExchangeRateManager>();
             services.AddTransient<IExchangeRateService, ExchangeRateService>();
             services.AddTransient<IJsonDeserializeService, JsonDeserializeService>();
+            services.AddTransient<IWorkedTaskManager, WorkedTaskManager>();
             services.AddTransient<ExchangeRateURL>();
             services.AddTransient<ErrorMessages>();
         }

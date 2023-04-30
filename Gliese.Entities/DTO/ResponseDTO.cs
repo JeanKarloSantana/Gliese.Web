@@ -9,7 +9,7 @@ namespace Gliese.Entities.DTO
     public class ResponseDTO<T>
     {
         public T Data { get; set; }
-        public bool Succeeded { get; set; }
+        public bool succeed { get; set; }
         public List<string> Errors { get; set; }
         public string Message { get; set; }
         public ushort StatusCode { get; set; }
@@ -17,7 +17,7 @@ namespace Gliese.Entities.DTO
         public ResponseDTO()
         {
             Errors = new List<string>();
-            Succeeded = true;
+            succeed = true;
         }
     }
 }
